@@ -1,0 +1,67 @@
+{
+  "best_model": "Random Forest",
+  "feature_columns": [
+    "Temparature",
+    "Humidity",
+    "Moisture",
+    "Soil Type",
+    "Crop Type",
+    "Nitrogen",
+    "Potassium",
+    "Phosphorous"
+  ],
+  "soil_types": [
+    "Black",
+    "Clayey",
+    "Loamy",
+    "Red",
+    "Sandy"
+  ],
+  "crop_types": [
+    "Barley",
+    "Cotton",
+    "Ground Nuts",
+    "Maize",
+    "Millets",
+    "Oil seeds",
+    "Paddy",
+    "Sugarcane",
+    "Tobacco",
+    "Wheat"
+  ],
+  "fertilizer_names": [
+    "10-26-26",
+    "14-35-14",
+    "17-17-17",
+    "20-20",
+    "28-28",
+    "DAP",
+    "Urea"
+  ],
+  "results": {
+    "Random Forest": {
+      "accuracy": 99.29,
+      "precision": 99.32,
+      "recall": 99.29,
+      "f1_score": 99.29
+    },
+    "SVM": {
+      "accuracy": 98.57,
+      "precision": 98.64,
+      "recall": 98.57,
+      "f1_score": 98.57
+    },
+    "KNN": {
+      "accuracy": 98.57,
+      "precision": 98.64,
+      "recall": 98.57,
+      "f1_score": 98.57
+    },
+    "MLP Neural Network": {
+      "accuracy": 95.71,
+      "precision": 95.85,
+      "recall": 95.71,
+      "f1_score": 95.67
+    }
+  }
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered fertilizer recommendation agent. Get the best fertilizer for your soil and crop conditions instantly.">
+    <title>🌱 Fertilizer AI Agent — Smart Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-leaf leaf-1">🌿</div>
+        <div class="floating-leaf leaf-2">🍃</div>
+        <div class="floating-leaf leaf-3">🌾</div>
+        <div class="floating-leaf leaf-4">🌿</div>
+        <div class="floating-leaf leaf-5">🍃</div>
+        <div class="floating-leaf leaf-6">🌾</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <div>
+                    <h1>Fertilizer AI Agent</h1>
+                    <p class="tagline">Smart recommendations powered by Machine Learning</p>
+                </div>
+            </div>
+            <div class="header-badge" id="modelBadge">
+                <span class="badge-dot"></span>
+                <span id="modelName">Loading...</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Input Section -->
+        <section class="input-section" id="inputSection">
+            <div class="section-header">
+                <h2>🔬 Input Parameters</h2>
+                <p>Enter your soil and crop conditions for an AI-powered fertilizer recommendation</p>
+            </div>
+
+            <form id="predictionForm" class="prediction-form">
+                <!-- Environment Row -->
+                <div class="form-group-title">
+                    <span class="group-icon">🌡️</span> Environmental Conditions
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="temperature">Temperature (°C)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="temperature" name="temperature" min="15" max="45" value="30" class="range-input">
+                            <span class="range-value" id="temperatureValue">30°C</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="humidity">Humidity (%)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="humidity" name="humidity" min="20" max="100" value="55" class="range-input">
+                            <span class="range-value" id="humidityValue">55%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="moisture">Moisture (%)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="moisture" name="moisture" min="10" max="100" value="40" class="range-input">
+                            <span class="range-value" id="moistureValue">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soil & Crop Row -->
+                <div class="form-group-title">
+                    <span class="group-icon">🌍</span> Soil & Crop
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="soil_type">Soil Type</label>
+                        <div class="select-wrapper">
+                            <select id="soil_type" name="soil_type">
+                                <option value="Sandy">🏖️ Sandy</option>
+                                <option value="Loamy" selected>🌾 Loamy</option>
+                                <option value="Black">⬛ Black</option>
+                                <option value="Red">🟥 Red</option>
+                                <option value="Clayey">🧱 Clayey</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="crop_type">Crop Type</label>
+                        <div class="select-wrapper">
+                            <select id="crop_type" name="crop_type">
+                                <option value="Maize">🌽 Maize</option>
+                                <option value="Sugarcane">🎋 Sugarcane</option>
+                                <option value="Cotton">🌸 Cotton</option>
+                                <option value="Tobacco">🍂 Tobacco</option>
+                                <option value="Paddy" selected>🌾 Paddy</option>
+                                <option value="Barley">🌿 Barley</option>
+                                <option value="Wheat">🌾 Wheat</option>
+                                <option value="Millets">🌿 Millets</option>
+                                <option value="Oil seeds">🫒 Oil seeds</option>
+                                <option value="Ground Nuts">🥜 Ground Nuts</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrients Row -->
+                <div class="form-group-title">
+                    <span class="group-icon">⚗️</span> Nutrient Levels (ppm)
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nitrogen">Nitrogen (N)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="nitrogen" name="nitrogen" min="0" max="60" value="20" class="range-input range-nitrogen">
+                            <span class="range-value" id="nitrogenValue">20</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="potassium">Potassium (K)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="potassium" name="potassium" min="0" max="50" value="10" class="range-input range-potassium">
+                            <span class="range-value" id="potassiumValue">10</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phosphorous">Phosphorous (P)</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="phosphorous" name="phosphorous" min="0" max="50" value="10" class="range-input range-phosphorous">
+                            <span class="range-value" id="phosphorousValue">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="predictBtn" class="predict-btn">
+                    <span class="btn-icon">🧠</span>
+                    <span class="btn-text">Get AI Recommendation</span>
+                    <span class="btn-loading" style="display:none;">
+                        <span class="spinner"></span> Analyzing...
+                    </span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Result Section -->
+        <section class="result-section hidden" id="resultSection">
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="result-icon" id="resultIcon">🌱</div>
+                    <div>
+                        <h2 id="resultTitle">Recommended Fertilizer</h2>
+                        <p class="result-subtitle" id="resultSubtitle">Based on your conditions</p>
+                    </div>
+                </div>
+
+                <div class="fertilizer-name-container">
+                    <div class="fertilizer-name" id="fertilizerName">—</div>
+                    <div class="confidence-badge" id="confidenceBadge">
+                        <span class="confidence-label">Confidence</span>
+                        <span class="confidence-value" id="confidenceValue">—</span>
+                    </div>
+                </div>
+
+                <div class="result-tip" id="resultTip">
+                    <div class="tip-icon">💡</div>
+                    <p id="tipText">—</p>
+                </div>
+
+                <div class="result-details" id="resultDetails">
+                    <h3>Input Summary</h3>
+                    <div class="details-grid" id="detailsGrid"></div>
+                </div>
+
+                <div class="result-model-info">
+                    <span>Model: <strong id="modelUsed">—</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Performance Section -->
+        <section class="performance-section" id="performanceSection">
+            <div class="section-header">
+                <h2>📊 Model Performance Dashboard</h2>
+                <p>Comparison of trained ML models on the test set</p>
+            </div>
+            <div class="performance-grid" id="performanceGrid">
+                <!-- Filled by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>🌱 Fertilizer AI Agent • Powered by scikit-learn & Flask • Built with ❤️</p>
+    </footer>
+
+    <script>
+        // Pass metadata from Flask to JS
+        const MODEL_METADATA = {{ metadata | tojson | safe if metadata else 'null' }};
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
